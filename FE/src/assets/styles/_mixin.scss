@@ -1,0 +1,147 @@
+@use 'src/assets/styles/_variable.scss' as *;
+/*****************************MIXIN*******************************/
+//MX-COLOR
+@mixin auto-color($color, $listColor) {
+  $hex-color: if(map-has-key($listColor, $color), map-get($listColor, $color), $color);
+  .tc-#{'#{$color}'} {
+    color: $hex-color !important;
+  }
+  .bgc-#{$color} {
+    background-color: $hex-color !important;
+  }
+  .btn-outline-#{'#{$color}'} {
+    color: $hex-color !important;
+    border: 1px solid $hex-color !important;
+    background-color: unset !important;
+  }
+  .outline-#{'#{$color}'} {
+    color: $hex-color !important;
+    border: 1px solid $hex-color !important;
+    background-color: unset !important;
+  }
+}
+//MX-PALETTE
+@mixin create-color-variables($name, $base-color) {
+  // Tạo dải màu từ primary
+  $darker-colors: ();
+  $lighter-colors: ();
+
+  //base
+  $variable-name-base: '--#{$name}';
+  #{$variable-name-base}: $base-color;
+
+  @for $i from 1 through 10 {
+    $ratio: $i * 10; // Tỷ lệ tăng giảm màu sắc
+    $darker-colors: append($darker-colors, mix(#000, $base-color, $ratio), comma);
+    $lighter-colors: append($lighter-colors, mix(#fff, $base-color, $ratio), comma);
+    $variable-name-dark: '--#{$name}-dark-#{$i}';
+    #{$variable-name-dark}: nth($darker-colors, $i);
+    $variable-name-light: '--#{$name}-light-#{$i}';
+    #{$variable-name-light}: nth($lighter-colors, $i);
+    .tc-#{$name}-dark-#{$i} {
+      color: nth($darker-colors, $i) !important;
+    }
+    .bgc-#{$name}-dark-#{$i} {
+      background-color: nth($darker-colors, $i) !important;
+    }
+    .outline-#{$name}-dark-#{$i} {
+      color: nth($darker-colors, $i) !important;
+      border: 1px solid nth($darker-colors, $i) !important;
+      background-color: unset !important;
+    }
+    .tc-#{$name}-light-#{$i} {
+      color: nth($lighter-colors, $i) !important;
+    }
+    .bgc-#{$name}-light-#{$i} {
+      background-color: nth($lighter-colors, $i) !important;
+    }
+    .outline-#{$name}-light-#{$i} {
+      color: nth($lighter-colors, $i) !important;
+      border: 1px solid nth($lighter-colors, $i) !important;
+      background-color: unset !important;
+    }
+  }
+}
+@mixin create-color-opacity($name, $base-color) {
+  // Tạo dải màu từ primary
+  $opacity-color: (0.87, 0.6, 0.58, 0.54, 0.42, 0.38, 0.26, 0.2, 0.18, 0.14, 0.12, 0.06);
+  $lighter-colors: ();
+
+  //base
+  $variable-name-base: '--#{$name}';
+  #{$variable-name-base}: $base-color;
+
+  @for $i from 1 through 12 {
+    $lighter-colors: rgb(0, 0, 0, nth($opacity-color, $i));
+    $variable-name-light: '--#{$name}-#{nth($opacity-color, $i)*100}';
+    #{$variable-name-light}: $lighter-colors;
+    .tc-#{$name}-#{nth($opacity-color, $i)*100} {
+      color: $lighter-colors !important;
+    }
+    .bgc-#{$name}-#{nth($opacity-color, $i)*100} {
+      background-color: $lighter-colors !important;
+    }
+  }
+}
+//MX-PILL
+@mixin pill-unit($color) {
+  $pill-accent: map-get($COLOR, $color);
+
+  @if not $pill-accent {
+    $pill-accent: $color; // Giữ nguyên nếu không phải màu được định nghĩa sẵn
+  }
+  .pill-#{'#{$color}'} {
+    display: flex;
+    align-items: center;
+    background: color-mix(in srgb, $pill-accent 5%, transparent);
+    color: $pill-accent;
+    padding-inline: 0.75rem;
+    padding-block: 0.375rem;
+    border-radius: 2.75rem;
+    border: 0;
+    transition: background 0.3s ease;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.4rem;
+    letter-spacing: -0.00875rem;
+    text-decoration: none;
+    width: max-content;
+  }
+}
+//MX-FLEXBOX
+@mixin auto-justify($name, $value) {
+  .j-#{'#{$name}'} {
+    display: flex;
+    justify-content: $value !important;
+  }
+}
+@mixin auto-align($align) {
+  .a-#{'#{$align}'} {
+    display: flex;
+    align-items: $align !important;
+  }
+}
+@mixin text-justify($justify) {
+  .t-#{'#{$justify}'} {
+    text-align: $justify !important;
+  }
+}
+//MX-POSITION
+@mixin position($pos) {
+  .position-#{'#{$pos}'} {
+    position: $pos !important;
+  }
+}
+//MX-CURSOR
+@mixin cursor($cursor) {
+  .cursor-#{'#{$cursor}'} {
+    cursor: $cursor !important;
+  }
+}
+@mixin cursor-resize($cursor) {
+  .cursor-#{'#{$cursor}'} {
+    cursor: $cursor + '-resize' !important;
+  }
+}
+/*****************************mixin*******************************/

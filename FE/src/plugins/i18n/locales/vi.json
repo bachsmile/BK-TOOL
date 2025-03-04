@@ -1,0 +1,17 @@
+{
+  "add": "Thêm mới",
+  "education": "Giáo dục",
+  "home": "Trang chủ",
+  "time_line": "Thời khóa biểu",
+  "date": "Ngày",
+  "name": "Tên",
+  "address": "Địa chỉ",
+  "grade": "Khối lớp",
+  "class": "Lớp",
+  "school_year": "Năm học",
+  "teacher": "Giáo viên",
+  "school": "Trường",
+  "role": "Quyền",
+  "admin": "Quản lý",
+  "api": "Api"
+}

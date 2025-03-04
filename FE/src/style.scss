@@ -1,0 +1,136 @@
+// margin top
+@for $i from 0 through 100 {
+  .mt-#{$i} {
+    margin-top: (4 * $i) + px !important;
+  }
+
+  .mr-#{$i} {
+    margin-right: (4 * $i) + px !important;
+  }
+
+  .mb-#{$i} {
+    margin-bottom: (4 * $i) + px !important;
+  }
+
+  .ml-#{$i} {
+    margin-left: (4 * $i) + px !important;
+  }
+
+  .my-#{$i} {
+    margin-block: (4 * $i) + px !important;
+  }
+
+  .mx-#{$i} {
+    margin-inline: (4 * $i) + px !important;
+  }
+
+  .ts-#{$i} {
+    font-size: (4 * $i) + px !important;
+  }
+  .w-#{$i} {
+    width: calc($i *1%) !important;
+  }
+}
+.w-100{
+  width: 100% !important;
+}
+$color-map: (
+  "dark": #080808,
+  "darkLight": #17181e,
+  "light": #f5f7fa,
+  "orange": #f7a600,
+  "red": #ff0000,
+  "green": #00ff00,
+  "blue": #0000ff,
+  "white": #ffffff,
+);
+
+@mixin auto-color($color) {
+  $hex-color: map-get($color-map, $color);
+
+  @if not $hex-color {
+    $hex-color: $color; // Giữ nguyên nếu không phải màu được định nghĩa sẵn
+  }
+
+  .tc-#{"#{$color}"} {
+    color: $hex-color !important;
+  }
+
+  .bgc-#{"#{$color}"} {
+    background-color: $hex-color !important;
+  }
+
+  .btn-outline-#{"#{$color}"} {
+    color: $hex-color !important;
+    border: 1px solid $hex-color !important;
+    background-color: unset !important;
+  }
+}
+
+// Sử dụng mixin với các tên màu cụ thể
+@include auto-color(red);
+@include auto-color(green);
+@include auto-color(blue);
+@include auto-color(white);
+@include auto-color(orange);
+@include auto-color(dark);
+@include auto-color(darkLight);
+@include auto-color(light);
+
+@mixin auto-justify($justify) {
+  .j-#{"#{$justify}"} {
+    display: flex;
+    justify-content: $justify;
+  }
+}
+
+@mixin auto-align($align) {
+  .a-#{"#{$align}"} {
+    display: flex;
+    align-content: $align;
+  }
+}
+
+@include auto-justify(center);
+@include auto-justify(start);
+@include auto-justify(end);
+@include auto-justify(left);
+@include auto-justify(right);
+@include auto-align(center);
+@include auto-align(start);
+@include auto-align(end);
+@include auto-align(left);
+@include auto-align(right);
+#app,#layout {
+  height: 100vh
+}
+.text-center{
+  text-align: center;
+}
+body {
+  background-color: #f5f5f5;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: unset;
+}
+
+// setting common
+.el-dialog {
+  border-radius: 8px !important;
+  padding: 16px !important;
+}
+
+.circular {
+  display: inline;
+  height: 30px;
+  width: 30px;
+  animation: loading-rotate 2s linear infinite;
+}
+
+.path {
+  animation: loading-dash 1.5s ease-in-out infinite;
+  stroke-dasharray: 90, 150;
+  stroke-dashoffset: 0;
+  stroke-width: 2;
+  stroke: var(--el-color-primary);
+  stroke-linecap: round;
+}

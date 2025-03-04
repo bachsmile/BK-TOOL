@@ -1,0 +1,195 @@
+@use 'src/assets/styles/_variable.scss' as *;
+@import 'src/assets/styles/_mixin.scss';
+
+/*****************************class*******************************/
+/**=> Tạo các biến theo step number **/
+@for $i from 0 through 40 {
+  /**margin**/
+  .m-a-#{$i} {
+    margin: (4 * $i) + px !important;
+  }
+  .m-a-#{$i}-50 {
+    margin: (4 * $i + 2) + px !important;
+  }
+  .p-a-#{$i} {
+    padding: (4 * $i) + px !important;
+  }
+  .p-a-#{$i}-50 {
+    padding: (4 * $i + 2) + px !important;
+  }
+  .m-t-#{$i} {
+    margin-top: (4 * $i) + px !important;
+  }
+  .m-r-#{$i} {
+    margin-right: (4 * $i) + px !important;
+  }
+  .m-b-#{$i} {
+    margin-bottom: (4 * $i) + px !important;
+  }
+  .m-l-#{$i} {
+    margin-left: (4 * $i) + px !important;
+  }
+  .m-y-#{$i} {
+    margin-block: (4 * $i) + px !important;
+  }
+  .m-x-#{$i} {
+    margin-inline: (4 * $i) + px !important;
+  }
+  .m-x-#{$i}-n {
+    margin-inline: -(4 * $i) + px !important;
+  }
+  /**padding**/
+  .p-t-#{$i} {
+    padding-top: (4 * $i) + px !important;
+  }
+  .p-r-#{$i} {
+    padding-right: (4 * $i) + px !important;
+  }
+  .p-b-#{$i} {
+    padding-bottom: (4 * $i) + px !important;
+  }
+  .p-l-#{$i} {
+    padding-left: (4 * $i) + px !important;
+  }
+  .p-y-#{$i} {
+    padding-block: (4 * $i) + px !important;
+  }
+  .p-y-#{$i}-50 {
+    padding-block: (4 * $i + 2) + px !important;
+  }
+  .p-x-#{$i} {
+    padding-inline: (4 * $i) + px !important;
+  }
+  .p-x-#{$i}-50 {
+    padding-inline: (4 * $i + 2) + px !important;
+  }
+
+  //text
+  .ts-#{$i} {
+    font-size: (4 * $i) + px !important;
+  }
+  .ts-#{$i}-50 {
+    font-size: (4 * $i + 2) + px !important;
+  }
+  .tw-#{$i} {
+    font-weight: 100 * $i !important;
+  }
+  //size
+  .w-#{$i} {
+    width: (4 * $i) + px !important;
+  }
+  .h-#{$i} {
+    height: (4 * $i) + px !important;
+  }
+  .text-break-all-#{$i} {
+    display: -webkit-box;
+    overflow: hidden;
+    min-width: 50px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $i; /* Số hàng tối đa muốn hiển thị */
+    text-overflow: ellipsis;
+    word-break: break-all;
+  }
+  .text-break-word-#{$i} {
+    display: -webkit-box;
+    overflow: hidden;
+    min-width: 50px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $i; /* Số hàng tối đa muốn hiển thị */
+    text-overflow: ellipsis;
+    word-break: break-word;
+  }
+}
+/**=> Tạo các biến theo step color **/
+//MX-COLOR
+@each $name, $value in $COLOR {
+  @include auto-color($name, $COLOR);
+  @include pill-unit($name);
+}
+@each $name, $value in $COLOR-SINGLE {
+  @include auto-color($name, $COLOR-SINGLE);
+}
+@each $name, $value in $COLOR-OPACITY {
+  @include auto-color($name, $COLOR-OPACITY);
+  @include pill-unit($name);
+}
+:root {
+  @each $name, $value in $COLOR {
+    @include create-color-variables($name, $value);
+  }
+  @each $name, $value in $COLOR-OPACITY {
+    @include create-color-opacity($name, $value);
+  }
+  --theme-background: #ffffff;
+  --bs-body-font-family: Roboto !important;
+}
+
+/**auto**/
+.mx-auto {
+  margin: 0 auto;
+}
+.ma-none {
+  margin: unset !important;
+}
+.my-auto {
+  margin: auto 0;
+}
+.px-auto {
+  padding: 0 auto;
+}
+.pa-none {
+  padding: unset !important;
+}
+.py-auto {
+  padding: auto 0;
+}
+.w-inherit {
+  width: inherit;
+}
+.h-inherit {
+  height: inherit;
+}
+.relative {
+  position: relative !important;
+}
+.text-nowrap {
+  text-wrap: nowrap;
+}
+.v-none {
+  visibility: hidden;
+}
+.over-auto{
+  overflow: auto;
+}
+//MX-FLEXBOX
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@each $name, $value in $FLEX-POSITION {
+  @include auto-justify($name, $value);
+  @include auto-align($value);
+  @include text-justify($value);
+}
+
+//MX-POSITION
+@each $name, $value in $POSITION {
+  @include position($value);
+}
+
+//MX-CURSOR
+@each $name, $value in $CURSOR {
+  @include cursor($value);
+}
+@each $name, $value in $CURSOR-RESIZE {
+  @include cursor-resize($value);
+}
+//MX-PILL
+.pill-group {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}

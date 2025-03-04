@@ -1,0 +1,58 @@
+/*****************************Biến*******************************/
+/**COlOR**/
+$COLOR-SINGLE: (
+  'white': #ffffff,
+);
+$COLOR-OPACITY: (
+  'black': #000000,
+);
+$COLOR: (
+  'primary': #2196f3,
+  'warning': #ffc107,
+  'success': #4caf50,
+  'error': #ff5252,
+  'danger': #ff5252,
+  'info': #03a9f4,
+  'secondary': #424242,
+  'purple': #9c27b0,
+);
+
+$FLEX-POSITION: (
+  'start': start,
+  'end': end,
+  'left': left,
+  'right': right,
+  'center': center,
+  'between': space-between,
+);
+$POSITION: (
+  'relative': relative,
+  'fixed': fixed,
+  'absolute': absolute,
+  'static': static,
+  'sticky': sticky,
+);
+$CURSOR: (
+  'pointer': pointer,
+  'move': move,
+  'none': none,
+  'progress': progress,
+  'text': text,
+  'zoom-in': zoom-in,
+  'zoom-out': zoom-out,
+  'cell': cell,
+  'copy': copy,
+  'crosshair': crosshair,
+  'help': help,
+  'grab': grab,
+  'grabbing': grabbing,
+  'wait': wait,
+);
+$CURSOR-RESIZE: (
+  'ns': ns,
+  'ew': ew,
+  'ne': ne,
+  'nw': nw,
+);
+
+/*****************************Biến*******************************/

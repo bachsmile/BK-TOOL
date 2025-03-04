@@ -1,0 +1,51 @@
+<template>
+  <div>
+    <el-dialog v-model="isShowCondition" title="Cài đặt thời gian rảnh" width="80%" center>
+      <div>
+        <CmTableTimeLine isColor></CmTableTimeLine>
+      </div>
+      <template #footer>
+        <div class="dialog-footer">
+          <el-button @click="close">Đóng</el-button>
+          <el-button type="primary" @click="submitForm">
+            Xác nhận
+          </el-button>
+        </div>
+      </template>
+    </el-dialog>
+  </div>
+</template>
+
+<script setup lang="ts">
+import CmTableTimeLine from '@/components/supports/CmTableTimeLine.vue';
+import { ref, watch } from 'vue';
+
+interface Props {
+  isShow?: boolean;
+}
+const props = withDefaults(defineProps<Props>(), {
+  isShow: false,
+});
+
+interface Emit {
+  (e: "update:isShow", isShow: boolean): void;
+}
+const emit = defineEmits<Emit>();
+const isShowCondition = ref(false);
+const submitForm = () => {
+  emit("update:isShow", false);
+};
+const close = () => {
+  emit("update:isShow", false);
+};
+watch(
+  () => props.isShow,
+  (val) => {
+    isShowCondition.value = val;
+  },
+  { immediate: true }
+);
+
+</script>
+
+<style scoped></style>
